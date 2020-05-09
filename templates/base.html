@@ -95,7 +95,7 @@
   {%- if MANGLE_EMAILS and link.startswith('mailto:') -%}
   <a data-email="{{ link|reverse }}"{% if not text %} data-title="{{ name }}"{% endif %} title="You need javascript enabled to view this email" class="email">{{ text }}{{ get_icon(link) }}</a>
   {%- else -%}
-  <a href="{{ link }}"{% if not text %} title="{{ name }}"{% endif %} {{ 'class="active"' if  output_file == link }}>{{ text }}{{ get_icon(link) }}</a>
+  {%- if link.startswith('/') -%}<a href="{{ SITEURL }}{{ link }}"{%- else -%}<a href="{{ link }}"{%- endif -%}{% if not text %} title="{{ name }}"{% endif %} {{ 'class="active"' if  output_file == link }}>{{ text }}{{ get_icon(link) }}</a>
   {%- endif -%}
 {%- endmacro -%}
 
@@ -133,7 +133,7 @@
 
       <div class="container">
       <div id="logo">
-        <span class="site-name"><a class="navbar-brand" href="{{ SITEURL }}"><img width="310" src="{{ USER_LOGO_URL }}" class="attachment-full size-full" alt="logo">          </a>
+        <span class="site-name"><a class="navbar-brand" href="{{ SITEURL }}"><img width="310" src="{{ SITEURL }}{{ USER_LOGO_URL }}" class="attachment-full size-full" alt="logo">          </a>
         </span><!-- end of .site-name -->
       </div><!-- end of #logo -->
         <div class="tagline">
