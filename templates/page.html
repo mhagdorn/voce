@@ -12,6 +12,11 @@
         <span class="cat-item"><time datetime="{{ page.modified }}">Last Modified {{ page.locale_modified }}</time></span>
         <h1 class="entry-title"><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></h1>
       </header><!-- .entry-header -->
+
+      <div class="text-center">
+	<img class="img-fluid" src="{{ page.cover_image_url }}" alt="{{ page.cover_image_alt }}">
+      </div>
+
       <div class="entry-content">
         {{ page.content }}
       </div><!-- .entry-content -->
