@@ -21,8 +21,13 @@
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="{{ SITEURL }}/theme/js/functions.js"></script>
 
-  
- 
+{% if article %}
+    {% if article.stylesheets %}
+        {% for stylesheet in article.stylesheets %}
+{{ stylesheet }}
+        {% endfor %}
+    {% endif %}
+{% endif %}
 
   {% if FEED_ALL_ATOM %}
   <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />
@@ -223,4 +228,11 @@
 
   {% endblock scripts %}
 </body>
+{% if article %}
+{% if article.javascripts %}
+{% for javascript in article.javascripts %}
+{{ javascript }}
+{% endfor %}
+{% endif %}
+{% endif %}
 </html>
