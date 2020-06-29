@@ -22,7 +22,11 @@
 {% endif %}
 <meta name="og:title" content="{{ article.title[:70]|e }}">
 <meta name="og:description" content="{{ article.summary[:200]|striptags }}">
+{% if article.twittercardimage %}
+<meta name="twitter:image:src" content="{{ SITEURL }}/{{ article.twittercardimage }}">
+{% else %}
 <meta name="twitter:image:src" content="{{ article.cover_image_url }}">
+{% endif %}
 {% endif %}
 
 
